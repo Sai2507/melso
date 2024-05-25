@@ -1,8 +1,7 @@
-
-// document.addEventListener("contextmenu", function(event){
-//     alert("This Functionality is Disabled By Default... Please Contact Admin")
-//     event.preventDefault();
-// });
+document.addEventListener("contextmenu", function(event){
+   alert("This Functionality is Disabled By Default... Please Contact Admin")
+   event.preventDefault();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger');
