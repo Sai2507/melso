@@ -121,6 +121,8 @@
 // });
 
 
+// 
+
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
@@ -128,22 +130,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollTop = 0;
     let isScrolling;
     let hasScrolled = false;
+    let navbarActive = false;
 
     // Function to hide the navbar
     const hideNavbar = () => {
         navLinks.classList.remove('active');
         burger.classList.remove('toggle');
+        navbarActive = false;
     };
 
     // Toggle navbar on burger click
     burger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         burger.classList.toggle('toggle');
+        navbarActive = navLinks.classList.contains('active');
     });
 
     // Function to handle scroll behavior
     const handleScroll = () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (navbarActive) {
+            hideNavbar(); // Hide the navbar if it's active
+        }
 
         if (scrollTop > lastScrollTop) {
             // User is scrolling down, hide header
