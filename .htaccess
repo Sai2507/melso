@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^cupcake?$ index.html
+RewriteRule ^gingerbread?$ slide.html
+RewriteRule ^lolipop?$ popup.html 
+RewriteRule ^kitkat?$ whoiswho.html
