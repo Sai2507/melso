@@ -137,6 +137,7 @@ document.addEventListener('contextmenu', function(e) {
 // prevent certain combinations like "Ctrl+U"
 document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+
         e.preventDefault();
     }
 });
