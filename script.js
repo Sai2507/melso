@@ -1,8 +1,5 @@
 
-// document.addEventListener("contextmenu", function(event){
-//     alert("This Functionality is Disabled By Default... Please Contact Admin")
-//     event.preventDefault();
-// });
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const burger = document.querySelector('.burger');
@@ -122,6 +119,27 @@
 
 
 // 
+
+
+document.addEventListener("contextmenu", function(event){
+    alert("This Functionality is Disabled By Default... Please Contact Admin")
+    event.preventDefault();
+});
+
+// target images for right-click prevention:
+
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+}, false);
+
+// prevent certain combinations like "Ctrl+U"
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger');
