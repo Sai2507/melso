@@ -122,8 +122,8 @@
 
 
 document.addEventListener("contextmenu", function(event){
-    alert("This Functionality is Disabled By Default... Please Contact Admin")
-    event.preventDefault();
+   alert("This Functionality is Disabled By Default... Please Contact Admin")
+   event.preventDefault();
 });
 
 // target images for right-click prevention:
@@ -135,12 +135,33 @@ document.addEventListener('contextmenu', function(e) {
 }, false);
 
 // prevent certain combinations like "Ctrl+U"
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
-
-        e.preventDefault();
+document.addEventListener('keydown', function(event) {
+    // Disable F12
+    if (event.key === "F12") {
+        event.preventDefault();
     }
-});
+
+    // Disable Ctrl+Shift+I
+    if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+        event.preventDefault();
+    }
+
+    // Disable Ctrl+Shift+J
+    if (event.ctrlKey && event.shiftKey && event.key === 'J') {
+        event.preventDefault();
+    }
+
+    // Disable Ctrl+U
+    if (event.ctrlKey && event.key === 'U') {
+        event.preventDefault();
+    }
+
+    // Disable Ctrl+Shift+C
+    if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+        event.preventDefault();
+    }
+}, false);
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger');
@@ -217,3 +238,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check initial static state
     handleInitialScroll();
 });
+
+// to detect when Developer Tools are open and then take some action, such as redirecting the user or displaying a warning.
+// (function() {
+//     const devtools = { open: false, orientation: null };
+//     const threshold = 160;
+
+//     const emitEvent = (isOpen, orientation) => {
+//         window.dispatchEvent(new CustomEvent('devtoolschange', {
+//             detail: {
+//                 open: isOpen,
+//                 orientation: orientation
+//             }
+//         }));
+//     };
+
+//     const main = ({ emitEvents = true } = {}) => {
+//         const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+//         const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+//         const orientation = widthThreshold ? 'vertical' : 'horizontal';
+
+//         if (
+//             !(heightThreshold && widthThreshold) &&
+//             ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+//         ) {
+//             if ((!devtools.open || devtools.orientation !== orientation) && emitEvents) {
+//                 emitEvent(true, orientation);
+//             }
+
+//             devtools.open = true;
+//             devtools.orientation = orientation;
+//         } else {
+//             if (devtools.open && emitEvents) {
+//                 emitEvent(false, null);
+//             }
+
+//             devtools.open = false;
+//             devtools.orientation = null;
+//         }
+//     };
+
+//     main({ emitEvents: false });
+//     setInterval(main, 500);
+
+//     if (typeof module !== 'undefined' && module.exports) {
+//         module.exports = devtools;
+//     } else {
+//         window.devtools = devtools;
+//     }
+// })();
+
+// window.addEventListener('devtoolschange', function(event) {
+//     if (event.detail.open) {
+//         alert('Developer Tools are open. Please close them to continue.');
+//         // Optionally, redirect or take other actions
+//         window.location.href = 'https://www.example.com'; // Example: Redirect to another page
+//     }
+// });
