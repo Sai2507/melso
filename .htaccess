@@ -1,2 +1,7 @@
-RewriteEngine on
-RewriteRule ^cupcake?$ index.html
+# Enable the rewrite engine
+RewriteEngine On
+
+# Redirect requests for files without .html extension to the corresponding .html file
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
